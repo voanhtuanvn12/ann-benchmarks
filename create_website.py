@@ -11,11 +11,8 @@ import plot
 from ann_benchmarks import results
 from ann_benchmarks.datasets import get_dataset
 from ann_benchmarks.plotting.metrics import all_metrics as metrics
-from ann_benchmarks.plotting.plot_variants import \
-    all_plot_variants as plot_variants
-from ann_benchmarks.plotting.utils import (compute_all_metrics,
-                                           create_linestyles, create_pointset,
-                                           get_plot_label)
+from ann_benchmarks.plotting.plot_variants import all_plot_variants as plot_variants
+from ann_benchmarks.plotting.utils import compute_all_metrics, create_linestyles, create_pointset, get_plot_label
 
 colors = [
     "rgba(166,206,227,1)",
@@ -120,6 +117,8 @@ def get_lines(all_data, xn, yn, render_all_points):
 def create_plot(all_data, xn, yn, linestyle, j2_env, additional_label="", plottype="line"):
     xm, ym = (metrics[xn], metrics[yn])
     render_all_points = plottype == "bubble"
+    # render_all_points = True
+
     plot_data = get_lines(all_data, xn, yn, render_all_points)
     latex_code = j2_env.get_template("latex.template").render(
         plot_data=plot_data, caption=get_plot_label(xm, ym), xlabel=xm["description"], ylabel=ym["description"]
@@ -141,8 +140,8 @@ def create_plot(all_data, xn, yn, linestyle, j2_env, additional_label="", plotty
     )
 
 
-def build_detail_site(data, label_func, j2_env, linestyles, batch=False):
-    for (name, runs) in data.items():
+def build_detail_site(datas, label_func, j2_env, linestyles, batch=False):
+    for name, runs in datas.items():
         print("Building '%s'" % name)
         runs.keys()
         label = label_func(name)

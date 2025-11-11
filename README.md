@@ -1,4 +1,5 @@
 Benchmarking nearest neighbors
+Using geometric similarity 
 ==============================
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/erikbern/ann-benchmarks/benchmarks.yml?branch=main&style=flat-square)](https://github.com/erikbern/ann-benchmarks/actions/workflows/benchmarks.yml)

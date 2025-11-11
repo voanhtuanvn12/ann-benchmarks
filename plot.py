@@ -8,8 +8,7 @@ import numpy as np
 
 from ann_benchmarks.datasets import get_dataset
 from ann_benchmarks.plotting.metrics import all_metrics as metrics
-from ann_benchmarks.plotting.utils import (compute_metrics, create_linestyles,
-                                           create_pointset, get_plot_label)
+from ann_benchmarks.plotting.utils import compute_metrics, create_linestyles, create_pointset, get_plot_label
 from ann_benchmarks.results import get_unique_algorithms, load_all_results
 
 
@@ -32,14 +31,10 @@ def create_plot(all_data, raw, x_scale, y_scale, xn, yn, fn_out, linestyles, bat
         min_x = min([min_x] + [x for x in xs if x > 0])
         max_x = max([max_x] + [x for x in xs if x < 1])
         color, faded, linestyle, marker = linestyles[algo]
-        (handle,) = plt.plot(
-            xs, ys, "-", label=algo, color=color, ms=7, mew=3, lw=3, marker=marker
-        )
+        (handle,) = plt.plot(xs, ys, "-", label=algo, color=color, ms=7, mew=3, lw=3, marker=marker)
         handles.append(handle)
         if raw:
-            (handle2,) = plt.plot(
-                axs, ays, "-", label=algo, color=faded, ms=5, mew=2, lw=2, marker=marker
-            )
+            (handle2,) = plt.plot(axs, ays, "-", label=algo, color=faded, ms=5, mew=2, lw=2, marker=marker)
         labels.append(algo)
 
     ax = plt.gca()
@@ -108,7 +103,10 @@ if __name__ == "__main__":
         "-y", "--y-axis", help="Which metric to use on the Y-axis", choices=metrics.keys(), default="qps"
     )
     parser.add_argument(
-        "-X", "--x-scale", help="Scale to use when drawing the X-axis. Typically linear, logit or a2", default="linear",
+        "-X",
+        "--x-scale",
+        help="Scale to use when drawing the X-axis. Typically linear, logit or a2",
+        default="linear",
     )
     parser.add_argument(
         "-Y",

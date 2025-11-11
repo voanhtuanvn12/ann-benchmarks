@@ -12,6 +12,7 @@ from ann_benchmarks.algorithms.base.module import BaseANN
 
 import yaml
 
+
 @dataclass
 class Definition:
     algorithm: str
@@ -45,6 +46,7 @@ def instantiate_algorithm(definition: Definition) -> BaseANN:
 
 class InstantiationStatus(Enum):
     """Possible status of instantiating an algorithm from a python module import."""
+
     AVAILABLE = 0
     NO_CONSTRUCTOR = 1
     NO_MODULE = 2
@@ -70,8 +72,7 @@ def algorithm_status(definition: Definition) -> InstantiationStatus:
         else:
             return InstantiationStatus.NO_CONSTRUCTOR
     except ImportError:
-        logging.exception("Could not import algorithm module for %s",
-                          definition.module)
+        logging.exception("Could not import algorithm module for %s", definition.module)
         return InstantiationStatus.NO_MODULE
 
 
@@ -130,16 +131,15 @@ def _substitute_variables(arg: Any, vs: Dict[str, Any]) -> Any:
 def get_config_files(base_dir: str = "ann_benchmarks/algorithms") -> List[str]:
     """Get config files for all algorithms."""
     config_files = glob.glob(os.path.join(base_dir, "*", "config.yml"))
-    return list(
-        set(config_files) - {os.path.join(base_dir, "base", "config.yml")}
-    )
+    return list(set(config_files) - {os.path.join(base_dir, "base", "config.yml")})
+
 
 def load_configs(point_type: str, base_dir: str = "ann_benchmarks/algorithms") -> Dict[str, Any]:
     """Load algorithm configurations for a given point_type."""
     config_files = get_config_files(base_dir=base_dir)
     configs = {}
     for config_file in config_files:
-        with open(config_file, 'r') as stream:
+        with open(config_file, "r") as stream:
             try:
                 config_data = yaml.safe_load(stream)
                 algorithm_name = os.path.basename(os.path.dirname(config_file))
@@ -149,12 +149,13 @@ def load_configs(point_type: str, base_dir: str = "ann_benchmarks/algorithms") -
                 print(f"Error loading YAML from {config_file}: {e}")
     return configs
 
+
 def _get_definitions(base_dir: str = "ann_benchmarks/algorithms") -> List[Dict[str, Any]]:
     """Load algorithm configurations."""
     config_files = get_config_files(base_dir=base_dir)
     configs = []
     for config_file in config_files:
-        with open(config_file, 'r') as stream:
+        with open(config_file, "r") as stream:
             try:
                 config_data = yaml.safe_load(stream)
                 configs.append(config_data)
@@ -162,7 +163,10 @@ def _get_definitions(base_dir: str = "ann_benchmarks/algorithms") -> List[Dict[s
                 print(f"Error loading YAML from {config_file}: {e}")
     return configs
 
-def _get_algorithm_definitions(point_type: str, distance_metric: str, base_dir: str = "ann_benchmarks/algorithms") -> Dict[str, Dict[str, Any]]:
+
+def _get_algorithm_definitions(
+    point_type: str, distance_metric: str, base_dir: str = "ann_benchmarks/algorithms"
+) -> Dict[str, Dict[str, Any]]:
     """Get algorithm definitions for a specific point type and distance metric.
 
     A specific algorithm folder can have multiple algorithm definitions for a given point type and
@@ -192,6 +196,7 @@ def _get_algorithm_definitions(point_type: str, distance_metric: str, base_dir: 
     ```
     """
     configs = load_configs(point_type, base_dir)
+    # print("Loaded algorithm configs for point_type", point_type, ":", configs)
     definitions = {}
 
     # param `_` is filename, not specific name
@@ -205,6 +210,7 @@ def _get_algorithm_definitions(point_type: str, distance_metric: str, base_dir: 
             definitions[cc.pop("name")] = cc
 
     return definitions
+
 
 def list_algorithms(base_dir: str = "ann_benchmarks/algorithms") -> None:
     """
@@ -295,12 +301,16 @@ def prepare_query_args(run_group: Dict[str, Any]) -> List:
         List: A list of prepared query arguments.
     """
     if "query_args" in run_group or "query_arg_groups" in run_group:
-        return generate_arg_combinations(run_group, "query_arg_groups" if "query_arg_groups" in run_group else "query_args")
+        return generate_arg_combinations(
+            run_group, "query_arg_groups" if "query_arg_groups" in run_group else "query_args"
+        )
     else:
         return []
 
 
-def create_definitions_from_algorithm(name: str, algo: Dict[str, Any], dimension: int, distance_metric: str = "euclidean", count: int = 10) -> List[Definition]:
+def create_definitions_from_algorithm(
+    name: str, algo: Dict[str, Any], dimension: int, distance_metric: str = "euclidean", count: int = 10
+) -> List[Definition]:
     """
     Create definitions from an indvidual algorithm. An algorithm (e.g. annoy) can have multiple
      definitions based on various run groups (see config.ymls for clear examples).
@@ -354,25 +364,22 @@ def create_definitions_from_algorithm(name: str, algo: Dict[str, Any], dimension
             )
     return definitions
 
+
 def get_definitions(
     dimension: int,
     point_type: str = "float",
     distance_metric: str = "euclidean",
     count: int = 10,
-    base_dir: str = "ann_benchmarks/algorithms"
+    base_dir: str = "ann_benchmarks/algorithms",
 ) -> List[Definition]:
-    algorithm_definitions = _get_algorithm_definitions(point_type=point_type,
-                                                       distance_metric=distance_metric,
-                                                       base_dir=base_dir
-                                                       )
+    algorithm_definitions = _get_algorithm_definitions(
+        point_type=point_type, distance_metric=distance_metric, base_dir=base_dir
+    )
+    print("algorithm_definitions:", len(algorithm_definitions))
 
     definitions: List[Definition] = []
 
     # Map this for each config.yml
-    for (name, algo) in algorithm_definitions.items():
-        definitions.extend(
-            create_definitions_from_algorithm(name, algo, dimension, distance_metric, count)
-        )
-
-
+    for name, algo in algorithm_definitions.items():
+        definitions.extend(create_definitions_from_algorithm(name, algo, dimension, distance_metric, count))
     return definitions

@@ -10,10 +10,10 @@ float:
       default:
         args: [
           ['none', 'scalar', 'binary'], #quantization
-          [ 16,24], #m
-          [ 64,128], #ef_construct
+          [ 8, 16, 24, 32, 40, 48, 64, 72 ], #m
+          [ 64, 128, 256, 512 ], #ef_construct
         ]
         query_args: [
-          [20,40,60], #hnsw_ef
-          [False], # re-score
+          [null, 8, 16, 32, 64, 128, 256, 512, 768], #hnsw_ef
+          [True, False], # re-score
         ]

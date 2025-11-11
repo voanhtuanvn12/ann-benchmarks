@@ -19,8 +19,9 @@ from .distance import dataset_transform, metrics
 from .results import store_results
 
 
-def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.array, distance: str, count: int, 
-                         run_count: int, batch: bool) -> Tuple[dict, list]:
+def run_individual_query(
+    algo: BaseANN, X_train: numpy.array, X_test: numpy.array, distance: str, count: int, run_count: int, batch: bool
+) -> Tuple[dict, list]:
     """Run a search query using the provided algorithm and report the results.
 
     Args:
@@ -53,7 +54,7 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
 
             Returns:
                 List[Tuple[float, List[Tuple[int, float]]]]: Tuple containing
-                    1. Total time taken for each query 
+                    1. Total time taken for each query
                     2. Result pairs consisting of (point index, distance to candidate data )
             """
             if prepared_queries:
@@ -70,9 +71,7 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
             # make sure all returned indices are unique
             assert len(candidates) == len(set(candidates)), "Implementation returned duplicated candidates"
 
-            candidates = [
-                (int(idx), float(metrics[distance].distance(v, X_train[idx]))) for idx in candidates  # noqa
-            ]
+            candidates = [(int(idx), float(metrics[distance].distance(v, X_train[idx]))) for idx in candidates]  # noqa
             n_items_processed[0] += 1
             if n_items_processed[0] % 1000 == 0:
                 print("Processed %d/%d queries..." % (n_items_processed[0], len(X_test)))
@@ -91,7 +90,7 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
 
             Returns:
                 List[Tuple[float, List[Tuple[int, float]]]]: List of tuples, each containing
-                    1. Total time taken for each query 
+                    1. Total time taken for each query
                     2. Result pairs consisting of (point index, distance to candidate data )
             """
             # TODO: consider using a dataclass to represent return value.
@@ -148,10 +147,9 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
     return (attrs, results)
 
 
-def load_and_transform_dataset(dataset_name: str) -> Tuple[
-        Union[numpy.ndarray, List[numpy.ndarray]],
-        Union[numpy.ndarray, List[numpy.ndarray]],
-        str]:
+def load_and_transform_dataset(
+    dataset_name: str,
+) -> Tuple[Union[numpy.ndarray, List[numpy.ndarray]], Union[numpy.ndarray, List[numpy.ndarray]], str]:
     """Loads and transforms the dataset.
 
     Args:
@@ -226,22 +224,25 @@ function"""
             print(f"Running query argument group {pos} of {len(query_argument_groups)}...")
             if query_arguments:
                 algo.set_query_arguments(*query_arguments)
-            
+
             descriptor, results = run_individual_query(algo, X_train, X_test, distance, count, run_count, batch)
 
-            descriptor.update({
-                "build_time": build_time,
-                "index_size": index_size,
-                "algo": definition.algorithm,
-                "dataset": dataset_name
-            })
+            descriptor.update(
+                {
+                    "build_time": build_time,
+                    "index_size": index_size,
+                    "algo": definition.algorithm,
+                    "dataset": dataset_name,
+                }
+            )
 
             store_results(dataset_name, count, definition, query_arguments, descriptor, results, batch)
     finally:
         algo.done()
 
+
 def run_from_cmdline():
-    """Calls the function `run` using arguments from the command line. See `ArgumentParser` for 
+    """Calls the function `run` using arguments from the command line. See `ArgumentParser` for
     arguments, all run it with `--help`.
     """
     parser = argparse.ArgumentParser(
@@ -299,7 +300,7 @@ def run_docker(
     timeout: int,
     batch: bool,
     cpu_limit: str,
-    mem_limit: Optional[int] = None
+    mem_limit: Optional[int] = None,
 ) -> None:
     """Runs `run_from_cmdline` within a Docker container with specified parameters and logs the output.
 
@@ -324,7 +325,9 @@ def run_docker(
     cmd.append(json.dumps(definition.arguments))
     cmd += [json.dumps(qag) for qag in definition.query_argument_groups]
 
-    client = docker.from_env()
+    client = docker.DockerClient(base_url="unix:///Users/K2W6GKX41G/.rd/docker.sock")
+    print(client.version())
+    # client = docker.from_env()
     if mem_limit is None:
         mem_limit = psutil.virtual_memory().available
 
@@ -370,7 +373,7 @@ def run_docker(
 def _handle_container_return_value(
     return_value: Union[Dict[str, Union[int, str]], int],
     container: docker.models.containers.Container,
-    logger: logging.Logger
+    logger: logging.Logger,
 ) -> None:
     """Handles the return value of a Docker container and outputs error and stdout messages (with colour).
 
