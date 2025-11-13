@@ -48,7 +48,9 @@ if __name__ == "__main__":
     elif os.getenv("LIBRARY"):
         tags = [os.getenv("LIBRARY")]
     else:
-        tags = ["qdrant", "pgvector", "pgvectorscale"]
+        # tags = ["pgvectorscale"]
+        tags = ["milvus"]
+
         # tags = [fn.split(".")[-1] for fn in os.listdir("ann_benchmarks/algorithms")]
 
     print("Building algorithm images... with (%d) processes" % args.proc)

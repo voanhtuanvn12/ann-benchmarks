@@ -24,6 +24,7 @@ class ElasticsearchKNN(BaseANN):
 
         self.client = Elasticsearch(["http://localhost:9200"])
         self.batch_res = []
+        print("number of candidates =", self.num_candidates)
         self._wait_for_health_status()
 
     def _vector_similarity_metric(self, metric: str):
@@ -84,6 +85,12 @@ class ElasticsearchKNN(BaseANN):
             raise RuntimeError("Failed to index documents")
 
         print("Force merge index ...")
+        """
+        With force merge to 1 segment:
+            Single optimized segment
+            Faster queries (benchmark-critical!)
+            Fair comparison with other algorithms
+        """
         self.client.indices.forcemerge(index=self.index_name, max_num_segments=1, request_timeout=900)
 
         print("Refreshing index ...")
@@ -93,15 +100,20 @@ class ElasticsearchKNN(BaseANN):
         self.num_candidates = num_candidates
 
     def query(self, q, n):
-        if n > self.num_candidates:
-            raise ValueError("n must be smaller than num_candidates")
+        # print("Querying Elasticsearch ... with n =", n, "and num_candidates =", self.num_candidates)
+        num_candidates = self.num_candidates
+
+        if n > num_candidates:
+            # print("Error: n is greater than num_candidates, auto-adjusting n to num_candidates")
+            # raise ValueError("n must be smaller than num_candidates")
+            num_candidates = n
 
         body = {
             "knn": {
                 "field": "vec",
                 "query_vector": q.tolist(),
                 "k": n,
-                "num_candidates": self.num_candidates,
+                "num_candidates": num_candidates,
             }
         }
         res = self.client.search(

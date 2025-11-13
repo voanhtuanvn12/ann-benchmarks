@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>elasticsearch</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style>
+            body { padding-top: 50px; }
+        </style>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      </head>
+         <body>
+
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="index.html">ANN Benchmarks</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#datasets">Datasets</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#algorithms">Algorithms</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#contact">Contact</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+
+                    <div class="container">
+                                                        <h2>Plots for elasticsearch</h2>
+                                                                <h3>Recall/Queries per second (1/s)</h3>
+            <div id="RecallQueries per second (1/s)">
+            <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9768000000000001 , y: 297.68015450140996, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.98195 , y: 292.7154994813296, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.9859500000000001 , y: 286.17167104433014, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.98945 , y: 283.478426956101, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 271.6275270854183, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9945999999999999 , y: 231.66135464735802, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.97295 , y: 303.9973919291136, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9849249999999999 , y: 277.11140164369857, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.989175 , y: 249.15251810843384, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.992 , y: 248.2560301304392, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994675 , y: 220.6221583115412, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9674333333333334 , y: 284.839098117003, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9850833333333333 , y: 265.2453983986132, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.9942333333333334 , y: 246.05579559020657, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9704499999999999 , y: 315.2164404497544, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.977975 , y: 290.6954936592916, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 283.2773106491075, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 265.11022720050585, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9833999999999999 , y: 282.59182330572827, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9907 , y: 273.20563513198476, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9949999999999999 , y: 211.93072378646372, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9665666666666667 , y: 317.3008775865306, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9850666666666666 , y: 273.5499560649567, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 101.124488386716, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Build time (s)</h3>
+            <div id="RecallBuild time (s)">
+            <canvas id="chartRecallBuild time (s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallBuild time (s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9859500000000001 , y: 322.75748801231384, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.98945 , y: 347.66953706741333, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 568.6361737251282, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9945999999999999 , y: 598.4792983531952, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9849249999999999 , y: 340.35578775405884, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.989175 , y: 352.3113887310028, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.992 , y: 587.6974308490753, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994675 , y: 619.6212248802185, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9843 , y: 329.5839807987213, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9889166666666667 , y: 353.00367975234985, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9909166666666667 , y: 589.6326866149902, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9942333333333334 , y: 623.7901954650879, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.977975 , y: 321.4856104850769, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.98385 , y: 325.18453192710876, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 531.1648392677307, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 566.5146617889404, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9827 , y: 321.9198589324951, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9893000000000001 , y: 349.1161470413208, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 567.4721441268921, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9949999999999999 , y: 602.6810638904572, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9665666666666667 , y: 308.8706901073456, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9745666666666666 , y: 318.1099774837494, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9783416666666667 , y: 543.274816274643, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 20)" },
+                                                                    { x: 0.9850666666666666 , y: 563.4261310100555, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 20)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 2.848132610321045, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Build time (s) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Build time (s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)</h3>
+            <div id="RecallIndex size (kB)">
+            <canvas id="chartRecallIndex size (kB)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9907 , y: 42840.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9945999999999999 , y: 44032.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9849249999999999 , y: 41924.0, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.992 , y: 43716.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994675 , y: 44928.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9889166666666667 , y: 41924.0, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9909166666666667 , y: 42844.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9942333333333334 , y: 43088.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.977975 , y: 39692.0, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 43992.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 44036.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9893000000000001 , y: 43356.0, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 46048.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9949999999999999 , y: 46988.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9783416666666667 , y: 44864.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 20)" },
+                                                                    { x: 0.9850666666666666 , y: 47388.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 20)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 39560.0, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Distance computations</h3>
+            <div id="RecallDistance computations">
+            <canvas id="chartRecallDistance computations" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallDistance computations");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Distance computations tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Distance computations '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Relative Error/Queries per second (1/s)</h3>
+            <div id="Relative ErrorQueries per second (1/s)">
+            <canvas id="chartRelative ErrorQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRelative ErrorQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.08034913102649126 , y: 297.68015450140996, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.08027468404571943 , y: 292.7154994813296, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.08022128573764355 , y: 286.17167104433014, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.08018395729775277 , y: 283.478426956101, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.08014472297485362 , y: 271.6275270854183, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.0800839865973975 , y: 231.66135464735802, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.17272925349281498 , y: 303.9973919291136, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.17246736669635226 , y: 277.11140164369857, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.17239370053989664 , y: 267.7985496382013, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.17233769948410008 , y: 249.15251810843384, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.1722387614868727 , y: 248.2560301304392, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.17215928532582767 , y: 220.6221583115412, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.2698355376259133 , y: 284.839098117003, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.2692156974542136 , y: 265.2453983986132, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.2689551875952547 , y: 246.05579559020657, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.36959078084567404 , y: 315.2164404497544, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.3694420044275758 , y: 290.6954936592916, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.3690547155667387 , y: 283.2773106491075, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.3688272857917136 , y: 265.11022720050585, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.037283869935054795 , y: 282.59182330572827, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.03723489629810407 , y: 273.20563513198476, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.03723233133220514 , y: 228.68985450430884, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.03720294547084263 , y: 211.93072378646372, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5758689822842693 , y: 317.3008775865306, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.5748311072447869 , y: 273.5499560649567, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.5571919474980256 , y: 101.124488386716, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 100)" },
+                                                                    { x: 0.557189142372759 , y: 86.09942058509696, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Relative Error-Queries per second (1/s) tradeoff - up and to the left is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Relative Error   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Candidates generated</h3>
+            <div id="RecallCandidates generated">
+            <canvas id="chartRecallCandidates generated" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallCandidates generated");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9945999999999999 , y: 10.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.994675 , y: 20.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9942333333333334 , y: 30.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9915875 , y: 40.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9949999999999999 , y: 5.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9850666666666666 , y: 60.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 20)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 60.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Candidates generated tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Candidates generated '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)/Queries per second (s)</h3>
+            <div id="RecallIndex size (kB)/Queries per second (s)">
+            <canvas id="chartRecallIndex size (kB)/Queries per second (s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)/Queries per second (s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9768000000000001 , y: 150.5642862725258, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9859500000000001 , y: 156.61927624225615, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 157.71597400188446, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9945999999999999 , y: 190.07054528808592, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.97295 , y: 137.9090778837204, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9849249999999999 , y: 151.28933617067335, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.992 , y: 176.09239935493468, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994675 , y: 203.64228300476074, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9674333333333334 , y: 158.0120155467987, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9850833333333333 , y: 162.445796459198, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.9942333333333334 , y: 175.11475353240968, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9566000000000001 , y: 125.99371290826797, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.977975 , y: 136.54150430870055, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 155.29658870029448, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 166.1044934592247, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9827 , y: 158.2727665939331, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9893000000000001 , y: 159.74051915931702, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 168.54703592681886, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9949999999999999 , y: 221.7139599227905, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9665666666666667 , y: 147.8848730483055, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9745666666666666 , y: 169.67657565593723, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9850666666666666 , y: 173.23344036197662, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 391.2009902954101, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB)/Queries per second (s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.01 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.01 RecallQueries per second (1/s)">
+            <canvas id="chartEpsilon 0.01 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.01 RecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.982 , y: 297.68015450140996, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9858499999999999 , y: 292.7154994813296, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.98985 , y: 286.17167104433014, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9923500000000001 , y: 283.478426956101, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9936999999999999 , y: 271.6275270854183, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9968 , y: 231.66135464735802, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.980925 , y: 303.9973919291136, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9907 , y: 277.11140164369857, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994025 , y: 249.15251810843384, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9959 , y: 248.2560301304392, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9978 , y: 220.6221583115412, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9783166666666666 , y: 284.839098117003, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9924333333333333 , y: 265.2453983986132, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.9980166666666667 , y: 246.05579559020657, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.983375 , y: 315.2164404497544, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9880125 , y: 290.6954936592916, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.99445 , y: 283.2773106491075, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9971125000000001 , y: 265.11022720050585, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9848000000000001 , y: 282.59182330572827, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9919 , y: 273.20563513198476, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9959 , y: 211.93072378646372, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.982175 , y: 317.3008775865306, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9944666666666666 , y: 273.5499560649567, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 101.124488386716, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.01 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.1 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.1 RecallQueries per second (1/s)">
+            <canvas id="chartEpsilon 0.1 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.1 RecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.999 , y: 297.68015450140996, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9993000000000001 , y: 292.7154994813296, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 1.0 , y: 286.17167104433014, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.999475 , y: 303.9973919291136, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9994999999999999 , y: 277.11140164369857, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 1.0 , y: 267.7985496382013, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9993666666666667 , y: 284.839098117003, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 1.0 , y: 265.2453983986132, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9995375 , y: 315.2164404497544, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 1.0 , y: 265.11022720050585, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9977 , y: 282.59182330572827, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9991 , y: 273.20563513198476, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9992000000000001 , y: 228.68985450430884, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 1.0 , y: 211.93072378646372, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9996166666666666 , y: 317.3008775865306, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 1.0 , y: 273.5499560649567, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 101.124488386716, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.1 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 50 (millis)</h3>
+            <div id="RecallPercentile 50 (millis)">
+            <canvas id="chartRecallPercentile 50 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 50 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9768000000000001 , y: 2.7717352, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.98195 , y: 2.8121471, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.9859500000000001 , y: 3.024459, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.98945 , y: 3.0790567, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 3.2262802, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9945999999999999 , y: 3.8278103, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.97295 , y: 2.7468204, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9849249999999999 , y: 3.039956, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.989175 , y: 3.455639, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.992 , y: 3.4747124, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994675 , y: 3.9982796, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9674333333333334 , y: 2.9165745, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9850833333333333 , y: 3.1466484, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.9942333333333334 , y: 3.6287308, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9566000000000001 , y: 2.7130842, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9704499999999999 , y: 2.7288198, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.977975 , y: 2.990365, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9789375 , y: 3.0696392, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.9874 , y: 3.1107664, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 3.4524202, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9719 , y: 2.8121471, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9833999999999999 , y: 2.8722286, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9907 , y: 3.1297207, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9949999999999999 , y: 4.0466785, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9665666666666667 , y: 2.8315783, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9745666666666666 , y: 3.210187, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9850666666666666 , y: 3.2651424, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 8.416057, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 50 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 50 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 95 (millis)</h3>
+            <div id="RecallPercentile 95 (millis)">
+            <canvas id="chartRecallPercentile 95 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 95 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9859500000000001 , y: 6.35244, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.98945 , y: 6.91819, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 7.209121, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9945999999999999 , y: 7.836553, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.97295 , y: 7.098442, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.983125 , y: 7.526869, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9849249999999999 , y: 7.9613543, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.992 , y: 8.0468855, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994675 , y: 8.923744, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9942333333333334 , y: 7.480965, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9915875 , y: 5.979701, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9893000000000001 , y: 7.4323516, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 7.819295, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9949999999999999 , y: 9.861075, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9665666666666667 , y: 5.6764116, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9850666666666666 , y: 6.6756673, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 19.266617, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 95 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 95 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99 (millis)</h3>
+            <div id="RecallPercentile 99 (millis)">
+            <canvas id="chartRecallPercentile 99 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9907 , y: 12.196043, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9945999999999999 , y: 14.454958, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9849249999999999 , y: 13.772235, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.992 , y: 13.880144, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994675 , y: 15.635066, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9674333333333334 , y: 12.830764, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9942333333333334 , y: 13.151866, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.977975 , y: 11.780012, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 12.257388, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 12.334029, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9827 , y: 13.160257, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 13.321185, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9949999999999999 , y: 15.992229, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9665666666666667 , y: 10.3009205, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9850666666666666 , y: 12.016555, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 22.096016, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99.9 (millis)</h3>
+            <div id="RecallPercentile 99.9 (millis)">
+            <canvas id="chartRecallPercentile 99.9 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99.9 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.98945 , y: 16.007221, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9907 , y: 18.04762, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9945999999999999 , y: 20.214943, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.97295 , y: 15.950627, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.992 , y: 17.227053, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.994675 , y: 18.945923, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9784166666666666 , y: 16.423882, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9843 , y: 18.057325, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9909166666666667 , y: 20.556688, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9942333333333334 , y: 23.833996, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9704499999999999 , y: 15.507504, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.977975 , y: 15.804717, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 16.53047, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 16.71913, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9833999999999999 , y: 16.280012, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9907 , y: 17.284082, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9949999999999999 , y: 22.467197, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9665666666666667 , y: 14.853357, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9783416666666667 , y: 15.829786, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9850666666666666 , y: 15.986384, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-1k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 91.32852, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 100)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99.9 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                        <hr />
+                                            <hr />
+        
+            <div id="contact">
+            <h2>Contact</h2>
+            <p>ANN-Benchmarks has been developed by Martin Aumueller (maau@itu.dk), Erik Bernhardsson (mail@erikbern.com), and Alec Faitfull (alef@itu.dk). Please use
+            <a href="https://github.com/erikbern/ann-benchmarks/">Github</a> to submit your implementation or improvements.</p>
+            </div>
+        </div>
+    </body>
+</html>

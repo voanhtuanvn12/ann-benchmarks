@@ -326,7 +326,7 @@ def run_docker(
     cmd += [json.dumps(qag) for qag in definition.query_argument_groups]
 
     client = docker.DockerClient(base_url="unix:///Users/K2W6GKX41G/.rd/docker.sock")
-    print(client.version())
+    print("version....", client.version())
     # client = docker.from_env()
     if mem_limit is None:
         mem_limit = psutil.virtual_memory().available
@@ -367,7 +367,25 @@ def run_docker(
         logger.error(str(e))
     finally:
         logger.info("Removing container")
-        container.remove(force=True)
+        # container.remove(force=True, v=True)  # Force removal of associated volumes
+        try:
+            # Kill the container first
+            try:
+                container.kill()
+                logger.info("Container %s killed", container.short_id)
+            except docker.errors.NotFound:
+                logger.info("Container %s already stopped", container.short_id)
+            except Exception as e:
+                logger.warning("Failed to kill container: %s", str(e))
+
+            # Then remove it
+            container.remove(force=True, v=True)
+            logger.info("Container %s removed", container.short_id)
+
+        except docker.errors.NotFound:
+            logger.info("Container %s already removed", container.short_id)
+        except Exception as e:
+            logger.error("Failed to remove container %s: %s", container.short_id, str(e))
 
 
 def _handle_container_return_value(

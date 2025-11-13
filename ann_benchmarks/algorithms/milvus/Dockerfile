@@ -16,9 +16,13 @@ RUN echo \
 RUN apt-get update 
 RUN apt-get install -y wget docker-ce-cli docker-compose-plugin
 
-RUN pip3 install pymilvus==2.4.1
+RUN pip3 install pymilvus==2.6.3
 RUN python3 -c "from pymilvus import Collection"
 
 # Install milvus standalone by docker-compose.yml
-RUN wget https://github.com/milvus-io/milvus/releases/download/v2.4.1/milvus-standalone-docker-compose.yml -O docker-compose.yml
+RUN wget https://github.com/milvus-io/milvus/releases/download/v2.6.3/milvus-standalone-docker-compose.yml -O docker-compose.yml
 RUN sed -i 's|${DOCKER_VOLUME_DIRECTORY:-.}|/tmp|g' docker-compose.yml
+# # Set CPU count (how many CPUs can be used, not which ones)
+RUN sed -i '/container_name: milvus-standalone/a \    cpus: 2.0\n    mem_limit: 4G' docker-compose.yml
+RUN sed -i '/container_name: milvus-etcd/a \    cpus: 1.0\n    mem_limit: 1G' docker-compose.yml
+RUN sed -i '/container_name: milvus-minio/a \    cpus: 1.0\n    mem_limit: 1G' docker-compose.yml

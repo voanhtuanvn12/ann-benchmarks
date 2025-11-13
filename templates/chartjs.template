@@ -47,6 +47,32 @@
                                     scaleLabel: {
                                         display: true,
                                         labelString: ' {{ ylabel }} '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
                                     }
                                 }]
                             }

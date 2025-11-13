@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libssl-dev \
     pkg-config \
+    jq \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Rust and Cargo
@@ -42,6 +43,8 @@ RUN cargo install --locked cargo-pgrx@0.12.9
 RUN cargo pgrx init --pg16 pg_config
 RUN git clone https://github.com/timescale/pgvectorscale /tmp/pgvectorscale
 RUN cd /tmp/pgvectorscale/pgvectorscale && \
+    cargo install --locked cargo-pgrx --version $(cargo metadata --format-version 1 | jq -r '.packages[] | select(.name == "pgrx") | .version') && \
+    cargo pgrx init --pg16 pg_config && \
     cargo pgrx install --release
 
 USER postgres

@@ -65,13 +65,19 @@ def run_worker(cpu: int, mem_limit: int, args: argparse.Namespace, queue: multip
     Returns:
         None
     """
+
+    print("CPU worker:", cpu)
+    print("Memory limit (bytes):", mem_limit)
+
     while not queue.empty():
         definition = queue.get()
         if args.local:
             run(definition, args.dataset, args.count, args.runs, args.batch)
         else:
             cpu_limit = str(cpu) if not args.batch else f"0-{multiprocessing.cpu_count() - 1}"
-
+            if "milvus" in definition.algorithm:
+                cpu_limit = "5"
+            print("cpu_limit:", cpu_limit, multiprocessing.cpu_count())
             run_docker(definition, args.dataset, args.count, args.runs, args.timeout, args.batch, cpu_limit, mem_limit)
 
 
@@ -249,6 +255,7 @@ def create_workers_and_execute(definitions: List[Definition], args: argparse.Nam
                    one worker.
     """
     cpu_count = multiprocessing.cpu_count()
+    print("CPU count:", cpu_count)
     if args.parallelism > cpu_count - 1:
         raise Exception(f"Parallelism larger than {cpu_count - 1}! (CPU count minus one)")
 
@@ -262,6 +269,7 @@ def create_workers_and_execute(definitions: List[Definition], args: argparse.Nam
         task_queue.put(definition)
 
     print("len(task_queue):", len(definitions))
+    print("Available memory (bytes):", psutil.virtual_memory().available)
     memory_margin = 500e6  # reserve some extra memory for misc stuff
     mem_limit = int((psutil.virtual_memory().available - memory_margin) / args.parallelism)
 

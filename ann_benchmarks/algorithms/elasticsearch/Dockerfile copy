@@ -1,0 +1,102 @@
+# ---------- STAGE 1 ----------
+FROM ann-benchmarks AS builder
+ARG ELASTICSEARCH_VERSION=8.7.0
+
+ENV DEBIAN_FRONTEND=noninteractive
+# FIX: cần update trước khi install, thêm ca-certificates
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates && rm -rf /var/lib/apt/lists/*
+
+# Map arch -> tên file của Elastic (linux-x86_64 / linux-aarch64)
+# FIX: $(arch) không khớp tên artifact => dùng biến ES_ARCH
+ARG ES_ARCH
+RUN set -eux; \
+    ARCH="$(uname -m)"; \
+    case "$ARCH" in \
+      x86_64) ES_ARCH="linux-x86_64" ;; \
+      aarch64|arm64) ES_ARCH="linux-aarch64" ;; \
+      *) echo "Unsupported arch: $ARCH" && exit 1 ;; \
+    esac; \
+    echo "ES_ARCH=$ES_ARCH" > /tmp/es_env
+
+# Download Elasticsearch to intermediate builder.
+WORKDIR /tmp
+# FIX: dùng ES_ARCH đã map; tải cả .sha512
+RUN . /tmp/es_env; \
+    curl -fsSLO https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-${ES_ARCH}.tar.gz && \
+    curl -fsSLO https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-${ES_ARCH}.tar.gz.sha512 && \
+    sha512sum -c elasticsearch-${ELASTICSEARCH_VERSION}-${ES_ARCH}.tar.gz.sha512
+
+WORKDIR /usr/share/elasticsearch
+# FIX: dùng ES_ARCH đã map
+RUN . /tmp/es_env; \
+    tar -zxf /tmp/elasticsearch-${ELASTICSEARCH_VERSION}-${ES_ARCH}.tar.gz --strip-components=1
+
+# ---------- STAGE 2 ----------
+FROM ann-benchmarks
+ARG ELASTICSEARCH_VERSION=8.7.0
+
+ENV DEBIAN_FRONTEND=noninteractive
+# FIX: update trước khi install
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates procps \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/share/elasticsearch
+
+# Create elasticsearch user and user group.
+RUN groupadd -g 1000 elasticsearch || true
+RUN id -u 1000 &>/dev/null || adduser --uid 1000 --gid 1000 --home /usr/share/elasticsearch --disabled-password --gecos "" elasticsearch
+
+COPY --from=builder --chown=elasticsearch:elasticsearch /usr/share/elasticsearch /usr/share/elasticsearch
+
+# FIX: KHÔNG set vm.max_map_count trong container (không hiệu lực).
+# ==> đặt ở host hoặc docker run/compose (như đã hướng dẫn ở trên)
+# RUN echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+
+# Backup original configurations for potential future reference.
+RUN cp config/elasticsearch.yml config/elasticsearch.yml.bak && \
+    cp config/jvm.options config/jvm.options.bak
+
+# Ensure data/logs exist and owned
+# FIX: tạo data/logs để ES không lỗi quyền
+RUN mkdir -p data logs && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
+
+# Configure Elasticsearch for single-node, single-core.
+RUN echo '\
+discovery.type: single-node\n\
+node.roles: [master, data]\n\
+node.processors: 1\n\
+path.data: /usr/share/elasticsearch/data\n\
+path.logs: /usr/share/elasticsearch/logs\n\
+bootstrap.memory_lock: true\n\
+thread_pool.write.size: 1\n\
+thread_pool.search.size: 1\n\
+thread_pool.search.queue_size: 1\n\
+xpack.security.enabled: false\n\
+' > config/elasticsearch.yml
+
+RUN echo '\
+-Xms3G\n\
+-Xmx3G\n\
+-XX:+UseG1GC\n\
+-XX:HeapDumpPath=data\n\
+-XX:ErrorFile=/usr/share/elasticsearch/logs/hs_err_pid%p.log\n\
+-Xlog:gc*,gc+age=trace,safepoint:file=/usr/share/elasticsearch/logs/gc.log:utctime,pid,tags:filecount=32,filesize=64m\n\
+' > config/jvm.options
+
+RUN chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
+
+WORKDIR /home/app
+
+RUN python3 -m pip install --no-cache-dir elasticsearch==${ELASTICSEARCH_VERSION}
+
+# Custom entrypoint that also starts the Elasticsearch server.
+# FIX: entrypoint chờ ES ready rồi mới chạy python
+RUN printf '%s\n' \
+  'set -euo pipefail' \
+  'runuser -u elasticsearch -- /usr/share/elasticsearch/bin/elasticsearch > /usr/share/elasticsearch/logs/stdout.log 2>&1 &' \
+  'echo -n "Waiting for ES..."; for i in {1..60}; do curl -fsS http://127.0.0.1:9200 >/dev/null 2>&1 && { echo " ready"; break; }; echo -n "."; sleep 1; done' \
+  'curl -fsS http://127.0.0.1:9200 >/dev/null 2>&1' \
+  'exec python3 -u run_algorithm.py "$@"' \
+  > /home/app/entrypoint.sh && chmod +x /home/app/entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/home/app/entrypoint.sh"]

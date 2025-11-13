@@ -3,14 +3,16 @@
 
 # Configuration
 # DATASET="cohere-wikipedia-22-12-1k-angular"
-DATASET="cohere-wikipedia-22-12-1M-angular"
+DATASET="cohere-wikipedia-22-12-100k-angular"
+# DATASET="cohere-wikipedia-22-12-1k-angular"
+
 
 PARALLELISM=1
-ALGORITHMS=("qdrant" "pgvector")
-# ALGORITHMS=("qdrant")
+# ALGORITHMS=("qdrant" "pgvector" "elasticsearch" "pgvectorscale1" "pgvectorscale8" "pgvectorscale4")
+ALGORITHMS=("milvus-hnsw" "milvus-hnsw-sq")
 
 COUNT_VALUES=(5 10 20 30 40 60)
-# COUNT_VALUES=(5)
+COUNT_VALUES=(10)
 
 
 # Run benchmarks for each k value and algorithm

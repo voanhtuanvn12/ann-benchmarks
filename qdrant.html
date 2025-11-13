@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>qdrant</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style>
+            body { padding-top: 50px; }
+        </style>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      </head>
+         <body>
+
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="index.html">ANN Benchmarks</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#datasets">Datasets</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#algorithms">Algorithms</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#contact">Contact</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+
+                    <div class="container">
+                                                        <h2>Plots for qdrant</h2>
+                                                                <h3>Recall/Queries per second (1/s)</h3>
+            <div id="RecallQueries per second (1/s)">
+            <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.93665 , y: 2409.64777398062, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.94855 , y: 1831.9681922789491, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9662000000000001 , y: 1499.710734847905, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.98895 , y: 1069.6323819591037, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9938 , y: 783.9467418383583, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 397.1766141670509, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9537000000000001 , y: 878.702304813228, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9827 , y: 741.0982991047832, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9907999999999999 , y: 615.9771179764753, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.991075 , y: 495.68264995381526, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.99565 , y: 425.8923799017736, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9976749999999999 , y: 370.82883166440035, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.56315 , y: 983.4783393692265, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5638500000000001 , y: 912.2541059062432, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.56405 , y: 910.4425224419537, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6708833333333334 , y: 764.8207934486195, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6732833333333333 , y: 736.7330907946304, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9867166666666667 , y: 715.3867618354327, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9929 , y: 681.7064081852801, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9973833333333334 , y: 524.5974141123111, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5558125 , y: 999.3708518185076, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5559375 , y: 982.5885466216654, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5563625 , y: 969.0639402994523, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.556675 , y: 951.4847155875997, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 664.3089683921768, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 634.2069679838663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 545.0607063820436, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.992525 , y: 496.6315511406098, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 432.60512966074003, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 358.7118849208419, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.5785 , y: 1054.0479582190997, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5833999999999999 , y: 1012.3731562910967, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5857 , y: 957.9778767459161, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6618999999999999 , y: 933.6770072322445, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6725 , y: 874.5326364267944, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6759999999999999 , y: 783.4430911594369, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9568 , y: 766.9422478940102, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9812 , y: 656.5677769434304, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9869999999999999 , y: 557.472231415284, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9879 , y: 543.3702813026416, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9906 , y: 520.3207494060598, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9914999999999999 , y: 502.0301181875657, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9951000000000001 , y: 441.85328321179827, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5489916666666667 , y: 969.0020372056875, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5490916666666668 , y: 954.7198758089152, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6758916666666667 , y: 685.1424462925397, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9908750000000001 , y: 472.68556663329707, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9965333333333334 , y: 463.8558200838773, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Build time (s)</h3>
+            <div id="RecallBuild time (s)">
+            <canvas id="chartRecallBuild time (s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallBuild time (s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.56495 , y: 33.19311547279358, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5675 , y: 33.560657262802124, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.56775 , y: 39.068204402923584, label: "Qdrant(quantization=binary, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.7214 , y: 39.176780700683594, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.99085 , y: 53.97059774398804, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.99325 , y: 58.30759859085083, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 88.92317342758179, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.557875 , y: 35.01041388511658, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.56555 , y: 36.22386121749878, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.59985 , y: 39.126858949661255, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6005 , y: 55.53063750267029, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9952 , y: 59.0122594833374, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.99565 , y: 89.72001051902771, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9976749999999999 , y: 94.19355535507202, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.56405 , y: 34.09154486656189, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5830833333333333 , y: 39.491581201553345, label: "Qdrant(quantization=scalar, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6750833333333334 , y: 54.86667084693909, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9934 , y: 60.58458995819092, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9951666666666666 , y: 61.74112510681152, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 97.75083303451538, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9973833333333334 , y: 99.89351034164429, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.556675 , y: 33.72842454910278, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.590075 , y: 38.72681474685669, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9952875000000001 , y: 53.07263994216919, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 82.69685006141663, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.5857 , y: 35.34484243392944, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5955 , y: 40.25193977355957, label: "Qdrant(quantization=scalar, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6759999999999999 , y: 45.683022022247314, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9914999999999999 , y: 59.056620359420776, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9951000000000001 , y: 93.69371914863586, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5490916666666668 , y: 33.79707050323486, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5800916666666667 , y: 39.22351288795471, label: "Qdrant(quantization=scalar, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6758916666666667 , y: 51.170857429504395, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9908750000000001 , y: 53.649903774261475, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9940833333333334 , y: 58.93402886390686, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9946416666666666 , y: 84.26477932929993, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9965333333333334 , y: 93.98136925697327, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Build time (s) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Build time (s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)</h3>
+            <div id="RecallIndex size (kB)">
+            <canvas id="chartRecallIndex size (kB)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.7214 , y: 17796.0, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 19792.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.565825 , y: 17716.0, label: "Qdrant(quantization=binary, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6005 , y: 17768.0, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9907999999999999 , y: 17820.0, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.99565 , y: 17828.0, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9976749999999999 , y: 21876.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.5518333333333333 , y: 17800.0, label: "Qdrant(quantization=binary, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6750833333333334 , y: 17808.0, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 17816.0, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9973833333333334 , y: 19888.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9959875 , y: 17820.0, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 19840.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.6759999999999999 , y: 17796.0, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9879 , y: 17816.0, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9951000000000001 , y: 17836.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5289083333333333 , y: 17800.0, label: "Qdrant(quantization=binary, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9940833333333334 , y: 17804.0, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9946416666666666 , y: 17820.0, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9965333333333334 , y: 17844.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Distance computations</h3>
+            <div id="RecallDistance computations">
+            <canvas id="chartRecallDistance computations" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallDistance computations");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Distance computations tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Distance computations '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Relative Error/Queries per second (1/s)</h3>
+            <div id="Relative ErrorQueries per second (1/s)">
+            <canvas id="chartRelative ErrorQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRelative ErrorQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.08040250414668598 , y: 2409.64777398062, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.0802460958005939 , y: 1831.9681922789491, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.08018812169410586 , y: 1482.9041743520013, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.08018158963692298 , y: 1069.6323819591037, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.08012457266991932 , y: 783.9467418383583, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.08012336365162327 , y: 419.1516222560375, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.08007533875819653 , y: 397.1766141670509, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.17313449291696442 , y: 878.702304813228, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.17250155504705744 , y: 741.0982991047832, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.17234240122191807 , y: 615.9771179764753, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.17231598753053337 , y: 495.68264995381526, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.17218857043566552 , y: 425.8923799017736, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.17212506339128092 , y: 370.82883166440035, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.287890630645061 , y: 983.4783393692265, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.2877916926478336 , y: 912.2541059062432, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.2800186117679047 , y: 764.8207934486195, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.27980374234962196 , y: 736.7330907946304, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.26926024642003915 , y: 715.3867618354327, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.2690471401534382 , y: 681.7064081852801, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.26886892749821517 , y: 524.5974141123111, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.39456711739557415 , y: 999.3708518185076, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.3945648672781898 , y: 982.5885466216654, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.3944532681726954 , y: 969.0639402994523, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.38625138880376464 , y: 664.3089683921768, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.3859369097114234 , y: 634.2069679838663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.36947568902065764 , y: 545.0607063820436, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.3689737113409028 , y: 496.6315511406098, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.368747020410392 , y: 432.60512966074003, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.3685948520242965 , y: 358.7118849208419, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.039952114542731405 , y: 1054.0479582190997, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.03988234411189641 , y: 1012.3731562910967, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.039833962390153126 , y: 957.9778767459161, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.03918118486584626 , y: 933.6770072322445, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.039034335320657386 , y: 874.5326364267944, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.03898491249982583 , y: 783.4430911594369, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.03745793078786535 , y: 766.9422478940102, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.037311362507349524 , y: 656.5677769434304, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.03725566790410717 , y: 557.472231415284, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.03723570231030144 , y: 520.3207494060598, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.03722671023672451 , y: 502.0301181875657, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.03720725259852233 , y: 441.85328321179827, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.6133147641174513 , y: 969.0020372056875, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6133061666540127 , y: 954.7198758089152, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.596063214883321 , y: 685.1424462925397, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5748395032051762 , y: 472.68556663329707, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5742926239292594 , y: 463.8558200838773, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Relative Error-Queries per second (1/s) tradeoff - up and to the left is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Relative Error   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Candidates generated</h3>
+            <div id="RecallCandidates generated">
+            <canvas id="chartRecallCandidates generated" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallCandidates generated");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9962 , y: 10.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9976749999999999 , y: 20.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9973833333333334 , y: 30.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.997875 , y: 40.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.9951000000000001 , y: 5.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9965333333333334 , y: 60.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Candidates generated tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Candidates generated '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)/Queries per second (s)</h3>
+            <div id="RecallIndex size (kB)/Queries per second (s)">
+            <canvas id="chartRecallIndex size (kB)/Queries per second (s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)/Queries per second (s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.93665 , y: 8.243528458595277, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.94855 , y: 10.842983018875122, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9662000000000001 , y: 13.226550653457643, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.98895 , y: 18.544689123630523, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9938 , y: 25.302739256858825, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 49.83173554039001, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9537000000000001 , y: 20.279905836582184, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9827 , y: 24.045393197536466, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9907999999999999 , y: 28.92964605331421, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.991075 , y: 35.96656046295166, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.99565 , y: 41.8603404083252, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9976749999999999 , y: 58.99217679977417, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.56315 , y: 18.115294752120974, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5638500000000001 , y: 19.529646273612975, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.56405 , y: 19.568506040573123, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6708833333333334 , y: 23.28388578414917, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6732833333333333 , y: 24.171576141357423, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6750833333333334 , y: 25.604840040206913, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9867166666666667 , y: 27.80034669494629, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9929 , y: 29.173849271774287, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9973833333333334 , y: 37.91097604560852, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5563625 , y: 18.39300716781616, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.556675 , y: 20.994556899070737, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 29.943898015022278, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 31.365155231952663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.989025 , y: 36.15124058246612, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.992525 , y: 40.247140871524806, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 41.19229934692383, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 55.3090121459961, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.5785 , y: 16.894866937637328, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5833999999999999 , y: 17.59035182762146, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5857 , y: 18.589155796051024, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6618999999999999 , y: 19.060124499320985, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6725 , y: 20.349154804229737, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6759999999999999 , y: 22.715115112781525, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9568 , y: 23.229910790443423, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9812 , y: 27.135050828933718, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9879 , y: 32.78795438957215, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9906 , y: 34.278855917930606, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9914999999999999 , y: 39.55937956809997, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9951000000000001 , y: 40.36634031629562, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5489916666666667 , y: 18.394182174682616, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5490916666666668 , y: 18.669350509643554, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6758916666666667 , y: 26.143468554496764, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9965333333333334 , y: 38.468850076675416, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB)/Queries per second (s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.01 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.01 RecallQueries per second (1/s)">
+            <canvas id="chartEpsilon 0.01 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.01 RecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9459 , y: 2409.64777398062, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.95665 , y: 1831.9681922789491, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9732 , y: 1499.710734847905, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9925 , y: 1069.6323819591037, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9961 , y: 783.9467418383583, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9977499999999999 , y: 397.1766141670509, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9648999999999999 , y: 878.702304813228, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.989325 , y: 741.0982991047832, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9954000000000001 , y: 615.9771179764753, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9954750000000001 , y: 495.68264995381526, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9981 , y: 425.8923799017736, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.99915 , y: 370.82883166440035, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.5719333333333334 , y: 983.4783393692265, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5726833333333333 , y: 912.2541059062432, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5729833333333333 , y: 910.4425224419537, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6737333333333333 , y: 764.8207934486195, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6761 , y: 736.7330907946304, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9934 , y: 715.3867618354327, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9972666666666666 , y: 681.7064081852801, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.99935 , y: 524.5974141123111, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5652125 , y: 999.3708518185076, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5653374999999999 , y: 982.5885466216654, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5658624999999999 , y: 969.0639402994523, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.565975 , y: 951.4847155875997, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5914625 , y: 664.3089683921768, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5944499999999999 , y: 634.2069679838663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9909375 , y: 545.0607063820436, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9972375 , y: 496.6315511406098, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9991375 , y: 432.60512966074003, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9997875 , y: 358.7118849208419, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.5812999999999999 , y: 1054.0479582190997, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5861 , y: 1012.3731562910967, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5882 , y: 957.9778767459161, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6635 , y: 933.6770072322445, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6742 , y: 874.5326364267944, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6777 , y: 783.4430911594369, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9611000000000001 , y: 766.9422478940102, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9833999999999999 , y: 656.5677769434304, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9890000000000001 , y: 557.472231415284, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9894999999999999 , y: 543.3702813026416, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9917999999999999 , y: 520.3207494060598, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9929 , y: 502.0301181875657, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959 , y: 441.85328321179827, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.559975 , y: 969.0020372056875, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5600833333333333 , y: 954.7198758089152, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6793666666666667 , y: 685.1424462925397, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9970666666666667 , y: 472.68556663329707, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.99935 , y: 463.8558200838773, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.01 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.1 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.1 RecallQueries per second (1/s)">
+            <canvas id="chartEpsilon 0.1 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.1 RecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9999499999999999 , y: 2409.64777398062, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 1.0 , y: 1831.9681922789491, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9997 , y: 878.702304813228, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9999750000000001 , y: 741.0982991047832, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 1.0 , y: 496.3005863175917, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.81575 , y: 983.4783393692265, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.8157833333333334 , y: 912.2541059062432, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.8362833333333334 , y: 764.8207934486195, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.8383166666666667 , y: 736.7330907946304, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 1.0 , y: 715.3867618354327, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.8178000000000001 , y: 999.3708518185076, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.8182625 , y: 969.0639402994523, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.8565875000000001 , y: 664.3089683921768, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.8585499999999999 , y: 634.2069679838663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.8747125 , y: 582.7361033799509, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 1.0 , y: 545.0607063820436, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.7968 , y: 1054.0479582190997, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.8016 , y: 1012.3731562910967, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.8037000000000001 , y: 957.9778767459161, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.8064 , y: 783.4430911594369, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9965999999999999 , y: 766.9422478940102, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9981 , y: 656.5677769434304, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9983000000000001 , y: 631.6055615509897, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9992000000000001 , y: 557.472231415284, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9994 , y: 543.3702813026416, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9997999999999999 , y: 502.0301181875657, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.8209583333333333 , y: 969.0020372056875, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.8211166666666667 , y: 954.7198758089152, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.8494333333333334 , y: 685.1424462925397, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.87135 , y: 543.1288337322011, label: "Qdrant(quantization=scalar, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.8765583333333333 , y: 508.7304196497377, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.8956333333333333 , y: 498.5118526746331, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 1.0 , y: 472.68556663329707, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.1 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 50 (millis)</h3>
+            <div id="RecallPercentile 50 (millis)">
+            <canvas id="chartRecallPercentile 50 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 50 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.93665 , y: 0.4005432, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.94855 , y: 0.52821636, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9662000000000001 , y: 0.63097477, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.98895 , y: 0.91671944, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9938 , y: 1.26791, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 2.499938, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9537000000000001 , y: 1.0951757, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9827 , y: 1.3341904, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9907999999999999 , y: 1.5742779, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.991075 , y: 1.9917488, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.99565 , y: 2.31421, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9976749999999999 , y: 2.6870966, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.56315 , y: 0.9602308, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5638500000000001 , y: 1.0459423, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.56405 , y: 1.06287, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6708833333333334 , y: 1.2352467, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6732833333333333 , y: 1.3357401, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9867166666666667 , y: 1.3669729, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9929 , y: 1.4463663, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9973833333333334 , y: 1.8343925, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5558125 , y: 0.97465515, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5559375 , y: 0.99110603, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5563625 , y: 0.9921789, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.556675 , y: 1.0333061, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 1.4775991, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 1.5444756, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 1.7908812, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.989025 , y: 1.9629002, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.992525 , y: 1.996398, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 2.2907257, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 2.7570724, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.5785 , y: 0.9057522, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5833999999999999 , y: 0.95272064, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5857 , y: 1.0169744, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6618999999999999 , y: 1.0403395, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6725 , y: 1.1093616, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6759999999999999 , y: 1.24681, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9568 , y: 1.283884, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9812 , y: 1.4933348, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9869999999999999 , y: 1.760006, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9879 , y: 1.8241405, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9906 , y: 1.8943548, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9914999999999999 , y: 1.9748211, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9951000000000001 , y: 2.2497177, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5490916666666668 , y: 1.0023117, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6758916666666667 , y: 1.44732, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9908750000000001 , y: 2.085209, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9965333333333334 , y: 2.1269321, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 50 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 50 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 95 (millis)</h3>
+            <div id="RecallPercentile 95 (millis)">
+            <canvas id="chartRecallPercentile 95 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 95 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.93665 , y: 0.5009532, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.94855 , y: 0.66975355, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9526 , y: 0.86477995, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9662000000000001 , y: 0.88264936, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.98895 , y: 1.1754036, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9938 , y: 1.6275047, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 2.9471395, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.560775 , y: 1.314485, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.56555 , y: 1.3349056, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9537000000000001 , y: 1.3992069, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9827 , y: 1.6527413, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9907999999999999 , y: 1.9951223, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.991075 , y: 2.3819447, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.99565 , y: 2.8017282, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9976749999999999 , y: 3.2024503, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.56315 , y: 1.2339351, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.56405 , y: 1.3246773, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6732833333333333 , y: 1.614654, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6750833333333334 , y: 1.7397761, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9867166666666667 , y: 1.7731309, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9929 , y: 1.8186927, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9973833333333334 , y: 2.479231, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5558125 , y: 1.148951, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5559375 , y: 1.1613488, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.556675 , y: 1.1730431, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 1.7442819, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 1.7848372, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 2.131009, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.992525 , y: 2.3728368, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 2.7327893, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 3.3374429, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.5785 , y: 1.1442065, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5833999999999999 , y: 1.1909127, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5857 , y: 1.2493967, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6618999999999999 , y: 1.3148904, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6725 , y: 1.3561606, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6759999999999999 , y: 1.5526888, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9568 , y: 1.5649915, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9812 , y: 1.8411158, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9856999999999999 , y: 2.1817803, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9869999999999999 , y: 2.244508, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9879 , y: 2.2619367, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9906 , y: 2.2924662, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9914999999999999 , y: 2.425933, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9951000000000001 , y: 2.7265549, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5489916666666667 , y: 1.1391759, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5490916666666668 , y: 1.1883019, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6758916666666667 , y: 1.6572951, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9908750000000001 , y: 2.4321675, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9946416666666666 , y: 2.4814606, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9965333333333334 , y: 2.5468588, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 95 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 95 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99 (millis)</h3>
+            <div id="RecallPercentile 99 (millis)">
+            <canvas id="chartRecallPercentile 99 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.93665 , y: 0.7429481, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.94855 , y: 0.8701302, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9526 , y: 1.0304928, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.98895 , y: 1.3589954, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9938 , y: 1.8523551, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 3.1974363, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.56555 , y: 1.493261, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5656749999999999 , y: 1.6315079, label: "Qdrant(quantization=binary, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9537000000000001 , y: 1.6776111, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9827 , y: 1.8134332, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9907999999999999 , y: 2.52548, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.991075 , y: 2.625308, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.99565 , y: 3.0921292, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9976749999999999 , y: 3.4269285, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.56315 , y: 1.5035392, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.56405 , y: 1.5111661, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6732833333333333 , y: 1.7535925, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6750833333333334 , y: 1.9045472, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9929 , y: 2.0666385, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9962 , y: 2.916813, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9973833333333334 , y: 2.991736, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.556675 , y: 1.2860727, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 1.9491053, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 2.0029807, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 2.2850251, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.992525 , y: 2.5640583, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 3.011489, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 3.6907578, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.5833999999999999 , y: 1.2867546, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5857 , y: 1.3898396, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6725 , y: 1.4414883, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6759999999999999 , y: 1.6699266, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9568 , y: 1.7350006, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9678000000000001 , y: 2.0089746, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9812 , y: 2.0139337, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9856999999999999 , y: 2.3219657, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9879 , y: 2.432275, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9906 , y: 2.4960399, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9914999999999999 , y: 2.654841, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9951000000000001 , y: 2.9136612, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5489916666666667 , y: 1.2285924, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5490916666666668 , y: 1.4486127, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.6758916666666667 , y: 1.7604947, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9946416666666666 , y: 2.6800823, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9965333333333334 , y: 2.7694726, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99.9 (millis)</h3>
+            <div id="RecallPercentile 99.9 (millis)">
+            <canvas id="chartRecallPercentile 99.9 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99.9 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9526 , y: 1.2157772, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.98895 , y: 1.5752739, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9938 , y: 1.9860433, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9962 , y: 3.555164, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 20)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.56555 , y: 1.6472768, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9827 , y: 1.9893937, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.991075 , y: 3.274747, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9952 , y: 3.5643997, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9976749999999999 , y: 3.6309628, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 30)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.5516333333333333 , y: 1.935266, label: "Qdrant(quantization=binary, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6732833333333333 , y: 1.9381752, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6750833333333334 , y: 2.2924464, label: "Qdrant(quantization=scalar, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9822000000000001 , y: 2.4365234, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9929 , y: 3.0353615, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9962 , y: 3.1207604, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9973833333333334 , y: 11.388077, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 40)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.556675 , y: 1.4121984, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 2.4783328, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.992525 , y: 2.9669557, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 3.2911153, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 4.9120617, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 5)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.5833999999999999 , y: 1.4627234, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5857 , y: 1.4972936, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6725 , y: 1.6556231, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.6759999999999999 , y: 1.8471062, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9568 , y: 1.9585515, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9678000000000001 , y: 2.223309, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.9812 , y: 2.248349, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9856999999999999 , y: 2.5313976, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9879 , y: 2.707045, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9906 , y: 2.7461877, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9951000000000001 , y: 3.444541, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                {
+                            label: "cohere-wikipedia-22-12-100k-angular (k = 60)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.5489916666666667 , y: 1.4485554, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.6758916666666667 , y: 1.9435906, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9946416666666666 , y: 2.8372524, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9965333333333334 , y: 2.9468572, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99.9 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                        <hr />
+                                            <hr />
+        
+            <div id="contact">
+            <h2>Contact</h2>
+            <p>ANN-Benchmarks has been developed by Martin Aumueller (maau@itu.dk), Erik Bernhardsson (mail@erikbern.com), and Alec Faitfull (alef@itu.dk). Please use
+            <a href="https://github.com/erikbern/ann-benchmarks/">Github</a> to submit your implementation or improvements.</p>
+            </div>
+        </div>
+    </body>
+</html>

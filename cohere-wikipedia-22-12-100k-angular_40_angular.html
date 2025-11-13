@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>cohere-wikipedia-22-12-100k-angular (k = 40)</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style>
+            body { padding-top: 50px; }
+        </style>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      </head>
+         <body>
+
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="index.html">ANN Benchmarks</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#datasets">Datasets</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#algorithms">Algorithms</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#contact">Contact</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+
+                    <div class="container">
+                                                        <h2>Plots for cohere-wikipedia-22-12-100k-angular (k = 40)</h2>
+                                                                <h3>Recall/Queries per second (1/s)</h3>
+            <div id="RecallQueries per second (1/s)">
+            <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9704499999999999 , y: 315.2164404497544, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.977975 , y: 290.6954936592916, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 283.2773106491075, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 265.11022720050585, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.4979 , y: 1528.004926857622, label: "PGVector(m=16, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.49946250000000003 , y: 1404.832588682003, label: "PGVector(m=16, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.500075 , y: 1198.0785287268068, label: "PGVector(m=24, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9775625 , y: 949.7130122763135, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 0.982 , y: 902.849247265791, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.99025 , y: 744.5394853801522, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9922625 , y: 715.9457330618945, label: "PGVector(m=24, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.9935 , y: 687.8407539395258, label: "PGVector(m=16, ef_construction=128, ef_search=60)" },
+                                                                    { x: 0.9965249999999999 , y: 561.0108592006269, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973124999999999 , y: 551.7390523943759, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7895375 , y: 966.9514017646621, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7903374999999999 , y: 948.0597433258912, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7908000000000001 , y: 889.8988105202433, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.79225 , y: 889.4582554839853, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7924 , y: 849.3246495473533, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7940625 , y: 834.891475458229, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7941125 , y: 829.8108825152883, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7945875 , y: 768.2244796567601, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79475 , y: 754.4634955354252, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.794775 , y: 653.7528405754384, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7951625 , y: 560.7951322125107, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.96485 , y: 916.016103592733, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9698625 , y: 847.1395560252121, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9702624999999999 , y: 811.0310795367751, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9746874999999999 , y: 785.907161373795, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9749874999999999 , y: 719.0295005301473, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9781000000000001 , y: 693.1058401171618, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9787874999999999 , y: 690.7699468010644, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9805375 , y: 633.0828052742813, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9808 , y: 629.5275343550932, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.980825 , y: 618.9418941421927, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9810375 , y: 608.9535085208474, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9830875000000001 , y: 562.4679745714242, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9759 , y: 773.8801714774975, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9759499999999999 , y: 744.6932246972018, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.981025 , y: 738.5819743238983, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9853500000000001 , y: 709.7371193276227, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9879625000000001 , y: 623.2400113672878, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9888125000000001 , y: 616.3844690601538, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9911125000000001 , y: 603.1940361463066, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9927250000000001 , y: 491.58842872522507, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9928125 , y: 488.354395243582, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5558125 , y: 999.3708518185076, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5559375 , y: 982.5885466216654, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5563625 , y: 969.0639402994523, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.556675 , y: 951.4847155875997, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 664.3089683921768, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 634.2069679838663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 545.0607063820436, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.992525 , y: 496.6315511406098, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 432.60512966074003, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 358.7118849208419, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Build time (s)</h3>
+            <div id="RecallBuild time (s)">
+            <canvas id="chartRecallBuild time (s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallBuild time (s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.977975 , y: 321.4856104850769, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.98385 , y: 325.18453192710876, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 24}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 531.1648392677307, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 566.5146617889404, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.99025 , y: 77.11441802978516, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9965249999999999 , y: 107.61338448524475, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973124999999999 , y: 163.85945439338684, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7924 , y: 44.6639621257782, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.794725 , y: 53.83722400665283, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79475 , y: 54.25443410873413, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.794775 , y: 96.76946687698364, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7951625 , y: 104.11554551124573, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9737 , y: 48.836610555648804, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9742749999999999 , y: 51.002646923065186, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9805375 , y: 58.09609627723694, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.980825 , y: 60.2437949180603, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9829874999999999 , y: 105.74902844429016, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9830875000000001 , y: 112.18303942680359, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9846375 , y: 58.41635870933533, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9911125000000001 , y: 67.75412249565125, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9927250000000001 , y: 120.32670760154724, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9928125 , y: 121.67637848854065, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.556675 , y: 33.72842454910278, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.590075 , y: 38.72681474685669, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9952875000000001 , y: 53.07263994216919, label: "Qdrant(quantization=none, m=24, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 82.69685006141663, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Build time (s) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Build time (s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)</h3>
+            <div id="RecallIndex size (kB)">
+            <canvas id="chartRecallIndex size (kB)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.977975 , y: 39692.0, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 43992.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 44036.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.9965249999999999 , y: 399520.0, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973124999999999 , y: 399536.0, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.79335 , y: 25824.0, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7951625 , y: 32016.0, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9784 , y: 57160.0, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9830875000000001 , y: 61560.0, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9928125 , y: 100016.0, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.9959875 , y: 17820.0, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 19840.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Distance computations</h3>
+            <div id="RecallDistance computations">
+            <canvas id="chartRecallDistance computations" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallDistance computations");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Distance computations tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Distance computations '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Relative Error/Queries per second (1/s)</h3>
+            <div id="Relative ErrorQueries per second (1/s)">
+            <canvas id="chartRelative ErrorQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRelative ErrorQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.36959078084567404 , y: 315.2164404497544, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.3694420044275758 , y: 290.6954936592916, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.3690547155667387 , y: 283.2773106491075, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.3688272857917136 , y: 265.11022720050585, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.3693698999197526 , y: 949.7130122763135, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 0.3691622510274047 , y: 902.849247265791, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.3689488257143089 , y: 744.5394853801522, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.3688123073983791 , y: 715.9457330618945, label: "PGVector(m=24, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.36875199081894244 , y: 687.8407539395258, label: "PGVector(m=16, ef_construction=128, ef_search=60)" },
+                                                                    { x: 0.36864895559304506 , y: 561.0108592006269, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.3685834335181671 , y: 551.7390523943759, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.3749312161624102 , y: 966.9514017646621, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.3748881280936924 , y: 948.0597433258912, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.37481441156147444 , y: 889.8988105202433, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.37473763889967476 , y: 889.4582554839853, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.3746853152745287 , y: 849.3246495473533, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.37460907995419396 , y: 834.891475458229, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.374570626455611 , y: 829.8108825152883, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.3745360015149656 , y: 768.2244796567601, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.37450816051031466 , y: 687.9889509831098, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.3744891856398349 , y: 653.7528405754384, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.3744674568943474 , y: 560.7951322125107, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.3695522265955664 , y: 916.016103592733, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.36938675900821427 , y: 847.1395560252121, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.3693026314851136 , y: 811.0310795367751, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.3691717888384069 , y: 785.907161373795, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.3691579522956854 , y: 719.0295005301473, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.36901787409255044 , y: 693.1058401171618, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.36898026019000646 , y: 633.0828052742813, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.36892524985753583 , y: 629.5275343550932, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.3689182980023335 , y: 608.9535085208474, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.3688574776652735 , y: 562.4679745714242, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.36940983110736403 , y: 773.8801714774975, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.36937973998532886 , y: 744.6932246972018, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.369222366103792 , y: 738.5819743238983, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.36920228296654084 , y: 728.9719902299805, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.3689628973439214 , y: 709.7371193276227, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.36886338842138755 , y: 623.2400113672878, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.36885200349909963 , y: 616.3844690601538, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.3687721075400352 , y: 603.1940361463066, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.3687418149149506 , y: 569.1919823842828, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.36866376606717177 , y: 491.58842872522507, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.3686613144467381 , y: 488.354395243582, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.39456711739557415 , y: 999.3708518185076, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.3945648672781898 , y: 982.5885466216654, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.3944532681726954 , y: 969.0639402994523, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.38625138880376464 , y: 664.3089683921768, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.3859369097114234 , y: 634.2069679838663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.36947568902065764 , y: 545.0607063820436, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.3689737113409028 , y: 496.6315511406098, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.368747020410392 , y: 432.60512966074003, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.3685948520242965 , y: 358.7118849208419, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Relative Error-Queries per second (1/s) tradeoff - up and to the left is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Relative Error   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Candidates generated</h3>
+            <div id="RecallCandidates generated">
+            <canvas id="chartRecallCandidates generated" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallCandidates generated");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9915875 , y: 40.0, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.500075 , y: 20.024, label: "PGVector(m=24, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9973124999999999 , y: 40.0, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7951625 , y: 40.0, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9830875000000001 , y: 40.0, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9928125 , y: 40.0, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.997875 , y: 40.0, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Candidates generated tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Candidates generated '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)/Queries per second (s)</h3>
+            <div id="RecallIndex size (kB)/Queries per second (s)">
+            <canvas id="chartRecallIndex size (kB)/Queries per second (s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)/Queries per second (s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9566000000000001 , y: 125.99371290826797, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.977975 , y: 136.54150430870055, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 155.29658870029448, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 166.1044934592247, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.4979 , y: 261.4703611078262, label: "PGVector(m=16, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.49946250000000003 , y: 284.389758052826, label: "PGVector(m=16, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.500075 , y: 333.4806445655823, label: "PGVector(m=24, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9775625 , y: 420.6828745479583, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 0.982 , y: 442.5101989173889, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.99025 , y: 536.6108955202103, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9922625 , y: 558.0534690685272, label: "PGVector(m=24, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.9935 , y: 580.8321151542663, label: "PGVector(m=16, ef_construction=128, ef_search=60)" },
+                                                                    { x: 0.9965249999999999 , y: 712.1430778884887, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973124999999999 , y: 724.1394247264863, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7895375 , y: 26.706616230010987, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7903374999999999 , y: 27.23878973007202, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7908000000000001 , y: 29.01902968597412, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.79225 , y: 29.033403018951415, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7924 , y: 30.40533441925049, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7933125000000001 , y: 32.20603074645996, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7940625 , y: 38.34749897575378, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7941125 , y: 38.58228504180908, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7945875 , y: 41.67531867027282, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79475 , y: 42.435452728271486, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.794775 , y: 48.97263615989686, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7951625 , y: 57.09036716079712, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.96485 , y: 62.4006497001648, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9698625 , y: 67.47412465095519, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9702624999999999 , y: 70.47818689346313, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9746874999999999 , y: 72.73123698234558, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9779875 , y: 85.496890001297, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9781000000000001 , y: 88.8176039457321, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9787874999999999 , y: 89.11794771194458, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9805375 , y: 97.238464679718, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9808 , y: 97.78762109756471, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.980825 , y: 99.46006334781646, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9810375 , y: 101.09146123409272, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9830875000000001 , y: 109.4462312221527, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9759 , y: 129.23964676475526, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9759499999999999 , y: 134.3049683856964, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.981025 , y: 135.4162482662201, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9853500000000001 , y: 140.91978181266785, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9879625000000001 , y: 160.4775017261505, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9888125000000001 , y: 162.26236224365235, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9911125000000001 , y: 165.81065794181825, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9927250000000001 , y: 203.45474823188783, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9928125 , y: 204.80208834838865, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5563625 , y: 18.39300716781616, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.556675 , y: 20.994556899070737, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 29.943898015022278, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 31.365155231952663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.989025 , y: 36.15124058246612, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.992525 , y: 40.247140871524806, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 41.19229934692383, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 55.3090121459961, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB)/Queries per second (s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.01 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.01 RecallQueries per second (1/s)">
+            <canvas id="chartEpsilon 0.01 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.01 RecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.983375 , y: 315.2164404497544, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9880125 , y: 290.6954936592916, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.99445 , y: 283.2773106491075, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9971125000000001 , y: 265.11022720050585, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.49806249999999996 , y: 1528.004926857622, label: "PGVector(m=16, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.49965000000000004 , y: 1404.832588682003, label: "PGVector(m=16, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.500075 , y: 1198.0785287268068, label: "PGVector(m=24, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9882625 , y: 949.7130122763135, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 0.991325 , y: 902.849247265791, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.9959374999999999 , y: 744.5394853801522, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973875 , y: 715.9457330618945, label: "PGVector(m=24, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.9982 , y: 687.8407539395258, label: "PGVector(m=16, ef_construction=128, ef_search=60)" },
+                                                                    { x: 0.9991875 , y: 561.0108592006269, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9994624999999999 , y: 551.7390523943759, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.8067249999999999 , y: 966.9514017646621, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.8076375 , y: 948.0597433258912, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.8080624999999999 , y: 889.8988105202433, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.809325 , y: 889.4582554839853, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.80945 , y: 849.3246495473533, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.8112875 , y: 834.891475458229, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.8114375 , y: 829.8108825152883, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.8117125 , y: 768.2244796567601, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.8119500000000001 , y: 754.4634955354252, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.8119624999999999 , y: 645.8251485086162, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.8123875 , y: 560.7951322125107, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9775 , y: 916.016103592733, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9816 , y: 847.1395560252121, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9821875 , y: 811.0310795367751, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9856624999999999 , y: 785.907161373795, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9858874999999999 , y: 719.0295005301473, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9880625000000001 , y: 693.1058401171618, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9884625 , y: 690.7699468010644, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9898 , y: 633.0828052742813, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9902625 , y: 629.5275343550932, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.99035 , y: 608.9535085208474, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9921 , y: 562.4679745714242, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9864499999999999 , y: 773.8801714774975, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9864625 , y: 744.6932246972018, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9901 , y: 738.5819743238983, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.99315 , y: 709.7371193276227, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9949125000000001 , y: 623.2400113672878, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9955 , y: 616.3844690601538, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9967 , y: 603.1940361463066, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9968375 , y: 569.1919823842828, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9977625 , y: 491.58842872522507, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9977750000000001 , y: 488.354395243582, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5652125 , y: 999.3708518185076, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5653374999999999 , y: 982.5885466216654, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5658624999999999 , y: 969.0639402994523, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.565975 , y: 951.4847155875997, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5914625 , y: 664.3089683921768, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5944499999999999 , y: 634.2069679838663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9909375 , y: 545.0607063820436, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.9972375 , y: 496.6315511406098, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9991375 , y: 432.60512966074003, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9997875 , y: 358.7118849208419, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.01 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.1 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.1 RecallQueries per second (1/s)">
+            <canvas id="chartEpsilon 0.1 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.1 RecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9995375 , y: 315.2164404497544, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 1.0 , y: 265.11022720050585, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.4991875 , y: 1528.004926857622, label: "PGVector(m=16, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.5007875 , y: 1404.832588682003, label: "PGVector(m=16, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9995375 , y: 949.7130122763135, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 1.0 , y: 902.849247265791, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9950625000000001 , y: 966.9514017646621, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.9951000000000001 , y: 948.0597433258912, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.9952125 , y: 889.8988105202433, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.99565 , y: 889.4582554839853, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.995675 , y: 875.2485586260303, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.99605 , y: 849.3246495473533, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.9960875 , y: 829.8108825152883, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.9963 , y: 801.8374013021936, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.996475 , y: 764.7932504685022, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.99665 , y: 687.9889509831098, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.996725 , y: 645.8251485086162, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.9968 , y: 560.7951322125107, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 916.016103592733, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 773.8801714774975, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.8178000000000001 , y: 999.3708518185076, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.8182625 , y: 969.0639402994523, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.8565875000000001 , y: 664.3089683921768, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.8585499999999999 , y: 634.2069679838663, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.8747125 , y: 582.7361033799509, label: "Qdrant(quantization=scalar, m=16, ef_construct=128, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 1.0 , y: 545.0607063820436, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.1 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 50 (millis)</h3>
+            <div id="RecallPercentile 50 (millis)">
+            <canvas id="chartRecallPercentile 50 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 50 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9566000000000001 , y: 2.7130842, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.9704499999999999 , y: 2.7288198, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.977975 , y: 2.990365, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9789375 , y: 3.0696392, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 40)" },
+                                                                    { x: 0.9874 , y: 3.1107664, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 3.4524202, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.4979 , y: 0.6427765, label: "PGVector(m=16, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.49946250000000003 , y: 0.6927252, label: "PGVector(m=16, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.500075 , y: 0.82433224, label: "PGVector(m=24, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9775625 , y: 1.0489225, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 0.982 , y: 1.106143, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.99025 , y: 1.3486147, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9922625 , y: 1.3936758, label: "PGVector(m=24, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.9935 , y: 1.4574528, label: "PGVector(m=16, ef_construction=128, ef_search=60)" },
+                                                                    { x: 0.9965249999999999 , y: 1.7930269, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973124999999999 , y: 1.8216372, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7895375 , y: 1.0179281, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7903374999999999 , y: 1.0248423, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7908000000000001 , y: 1.109004, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.79225 , y: 1.1099577, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7924 , y: 1.1552572, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7940625 , y: 1.183033, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7941125 , y: 1.1893511, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7945875 , y: 1.2820959, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79475 , y: 1.3101101, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.794775 , y: 1.5194416, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7951625 , y: 1.6678572, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.96485 , y: 1.0831356, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9698625 , y: 1.1715889, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9702624999999999 , y: 1.198411, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9746874999999999 , y: 1.2537241, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9749874999999999 , y: 1.3712645, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9781000000000001 , y: 1.401186, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9787874999999999 , y: 1.4202595, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9805375 , y: 1.5563965, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9808 , y: 1.5734434, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.980825 , y: 1.5852451, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9810375 , y: 1.6137362, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9830875000000001 , y: 1.7528534, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9759 , y: 1.2769699, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9759499999999999 , y: 1.3072491, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.981025 , y: 1.3439655, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9853500000000001 , y: 1.398325, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9888125000000001 , y: 1.5646219, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9911125000000001 , y: 1.6479492, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9927250000000001 , y: 1.9985437, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9928125 , y: 2.0109415, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5558125 , y: 0.97465515, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5559375 , y: 0.99110603, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.5563625 , y: 0.9921789, label: "Qdrant(quantization=binary, m=24, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.556675 , y: 1.0333061, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 1.4775991, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 1.5444756, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 1.7908812, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.989025 , y: 1.9629002, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.992525 , y: 1.996398, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 2.2907257, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 2.7570724, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 50 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 50 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 95 (millis)</h3>
+            <div id="RecallPercentile 95 (millis)">
+            <canvas id="chartRecallPercentile 95 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 95 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9915875 , y: 5.979701, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.4979 , y: 0.9105563, label: "PGVector(m=16, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.49946250000000003 , y: 0.9945034, label: "PGVector(m=16, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.500075 , y: 1.1975765, label: "PGVector(m=24, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9775625 , y: 1.4383912, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 0.982 , y: 1.4749644, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.99025 , y: 1.8112897, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9922625 , y: 1.9144056, label: "PGVector(m=24, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.9935 , y: 1.9193766, label: "PGVector(m=16, ef_construction=128, ef_search=60)" },
+                                                                    { x: 0.9965249999999999 , y: 2.462255, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973124999999999 , y: 2.5110483, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7895375 , y: 1.2851477, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79225 , y: 1.3556838, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7924 , y: 1.4660358, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7940625 , y: 1.4979959, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7941125 , y: 1.5278338, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7945875 , y: 1.6422747, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79475 , y: 1.681709, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.794775 , y: 1.8949509, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7951625 , y: 2.7269003, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.96485 , y: 1.3587475, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9698625 , y: 1.4520762, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9702624999999999 , y: 1.581478, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9746874999999999 , y: 1.6022562, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9749874999999999 , y: 1.8320321, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9787874999999999 , y: 1.9298315, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9808 , y: 2.0216463, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9810375 , y: 2.1650667, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9830875000000001 , y: 2.2830963, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9759 , y: 1.6243933, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.981025 , y: 1.6997813, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9853500000000001 , y: 1.7709851, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9879625000000001 , y: 2.05971, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9911125000000001 , y: 2.08714, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9927250000000001 , y: 2.6427145, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9928125 , y: 2.7661443, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.5558125 , y: 1.148951, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=20, rescore=False)" },
+                                                                    { x: 0.5559375 , y: 1.1613488, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.556675 , y: 1.1730431, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 1.7442819, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 1.7848372, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 2.131009, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.992525 , y: 2.3728368, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 2.7327893, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 3.3374429, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 95 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 95 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99 (millis)</h3>
+            <div id="RecallPercentile 99 (millis)">
+            <canvas id="chartRecallPercentile 99 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.977975 , y: 11.780012, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 12.257388, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 12.334029, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.4979 , y: 1.1058618, label: "PGVector(m=16, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.49946250000000003 , y: 1.1947274, label: "PGVector(m=16, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.500075 , y: 1.3671685, label: "PGVector(m=24, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9775625 , y: 1.6231728, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 0.982 , y: 1.7173791, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.99025 , y: 2.0225694, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9935 , y: 2.0848157, label: "PGVector(m=16, ef_construction=128, ef_search=60)" },
+                                                                    { x: 0.9965249999999999 , y: 2.7552319, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973124999999999 , y: 2.7919102, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7895375 , y: 1.4737439, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79225 , y: 1.5595986, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7924 , y: 1.6722822, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7940625 , y: 1.7216325, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7941125 , y: 1.7428852, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.794325 , y: 1.9277622, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7945875 , y: 1.9600629, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79475 , y: 1.9691303, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.794775 , y: 2.1654153, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7951625 , y: 3.4068828, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.96485 , y: 1.5278031, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9698625 , y: 1.6987824, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9746874999999999 , y: 1.8005514, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9749874999999999 , y: 2.082143, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9787874999999999 , y: 2.1797776, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9808 , y: 2.2671294, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.980825 , y: 2.4920487, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9810375 , y: 2.498629, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9830875000000001 , y: 2.6619506, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9759 , y: 1.8370247, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.981025 , y: 1.9671963, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9853500000000001 , y: 2.0261574, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9879625000000001 , y: 2.2862625, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9911125000000001 , y: 2.387369, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9927250000000001 , y: 2.9971647, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9928125 , y: 3.1720617, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.556675 , y: 1.2860727, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.5871000000000001 , y: 1.9491053, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.590075 , y: 2.0029807, label: "Qdrant(quantization=scalar, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 2.2850251, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.992525 , y: 2.5640583, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 3.011489, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 3.6907578, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99.9 (millis)</h3>
+            <div id="RecallPercentile 99.9 (millis)">
+            <canvas id="chartRecallPercentile 99.9 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99.9 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "elasticsearch",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9704499999999999 , y: 15.507504, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 40)" },
+                                                                    { x: 0.977975 , y: 15.804717, label: "Elasticsearch(index_options: {'ef_construction': 64, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9874 , y: 16.53047, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 16}, num_canditates: 60)" },
+                                                                    { x: 0.9915875 , y: 16.71913, label: "Elasticsearch(index_options: {'ef_construction': 128, 'm': 24}, num_canditates: 60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvector",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.4979 , y: 1.4301268, label: "PGVector(m=16, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.5000625000000001 , y: 1.6401329, label: "PGVector(m=24, ef_construction=64, ef_search=20)" },
+                                                                    { x: 0.500075 , y: 1.6690758, label: "PGVector(m=24, ef_construction=128, ef_search=20)" },
+                                                                    { x: 0.9775625 , y: 1.9352499, label: "PGVector(m=16, ef_construction=64, ef_search=40)" },
+                                                                    { x: 0.982 , y: 2.0626054, label: "PGVector(m=16, ef_construction=128, ef_search=40)" },
+                                                                    { x: 0.99025 , y: 2.2611883, label: "PGVector(m=16, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9935 , y: 2.339939, label: "PGVector(m=16, ef_construction=128, ef_search=60)" },
+                                                                    { x: 0.9965249999999999 , y: 3.0353518, label: "PGVector(m=24, ef_construction=64, ef_search=60)" },
+                                                                    { x: 0.9973124999999999 , y: 3.0559146, label: "PGVector(m=24, ef_construction=128, ef_search=60)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale1",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7895375 , y: 1.7343066, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.79225 , y: 1.7393422, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7924 , y: 1.8979003, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7941125 , y: 1.9335954, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.5), nbits=1)" },
+                                                                    { x: 0.7943 , y: 2.1628628, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.79475 , y: 2.2621565, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.794775 , y: 2.5509257, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=1)" },
+                                                                    { x: 0.7951625 , y: 3.915302, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale4",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.96485 , y: 1.7333617, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9746874999999999 , y: 2.0712862, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9787874999999999 , y: 2.5480106, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9808 , y: 2.6547394, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.980825 , y: 2.7328682, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=4)" },
+                                                                    { x: 0.9810375 , y: 2.7871146, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                                    { x: 0.9830875000000001 , y: 2.96805, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=4)" },
+                                                            ]
+                        },
+                                                {
+                            label: "pgvectorscale8",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.9759 , y: 2.0726473, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.981025 , y: 2.2299745, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=64, max_alpha=1.5), nbits=8)" },
+                                                                    { x: 0.9844125 , y: 2.3293707, label: "PGDiskANN(metric=angular), num_neighbors=16, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9853500000000001 , y: 2.6236691, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9911125000000001 , y: 2.6972363, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=64, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9927250000000001 , y: 3.3927267, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.2), nbits=8)" },
+                                                                    { x: 0.9928125 , y: 3.5172033, label: "PGDiskANN(metric=angular), num_neighbors=24, search_list_size=128, max_alpha=1.5), nbits=8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "qdrant",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
+                            data: [
+                                                                    { x: 0.556675 , y: 1.4121984, label: "Qdrant(quantization=binary, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9826 , y: 2.4783328, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=40, rescore=False)" },
+                                                                    { x: 0.992525 , y: 2.9669557, label: "Qdrant(quantization=none, m=16, ef_construct=64, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.9959875 , y: 3.2911153, label: "Qdrant(quantization=none, m=16, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                                    { x: 0.997875 , y: 4.9120617, label: "Qdrant(quantization=none, m=24, ef_construct=128, hnsw_ef=60, rescore=False)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99.9 (millis) '
+                                    },
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Format scientific notation: 2e+3 -> 2×10³
+                                            if (value >= 1000 || value < 0.01) {
+                                                var exponent = Math.floor(Math.log10(Math.abs(value)));
+                                                var mantissa = value / Math.pow(10, exponent);
+                                                
+                                                // Superscript mapping
+                                                var superscripts = {
+                                                    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                                                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                                                    '-': '⁻'
+                                                };
+                                                
+                                                var expStr = exponent.toString().split('').map(function(c) {
+                                                    return superscripts[c] || c;
+                                                }).join('');
+                                                
+                                                // Round mantissa
+                                                var roundedMantissa = Math.round(mantissa * 100) / 100;
+                                                
+                                                return roundedMantissa + '×10' + expStr;
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                        <hr />
+                                            <hr />
+        
+            <div id="contact">
+            <h2>Contact</h2>
+            <p>ANN-Benchmarks has been developed by Martin Aumueller (maau@itu.dk), Erik Bernhardsson (mail@erikbern.com), and Alec Faitfull (alef@itu.dk). Please use
+            <a href="https://github.com/erikbern/ann-benchmarks/">Github</a> to submit your implementation or improvements.</p>
+            </div>
+        </div>
+    </body>
+</html>

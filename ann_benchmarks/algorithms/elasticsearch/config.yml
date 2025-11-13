@@ -7,19 +7,19 @@ float:
     module: ann_benchmarks.algorithms.elasticsearch
     name: elasticsearch
     run_groups:
-      m-16-ef-100:
-        arg_groups: [{ef_construction: 100, m: 16}]
+      m-16-ef-64:
+        arg_groups: [{ef_construction: 64, m: 16}]
         args: {}
-        query_args: [[10, 20, 40, 80, 160]]
-  euclidean:
-  - base_args: ['@metric', '@dimension']
-    constructor: ElasticsearchKNN
-    disabled: false
-    docker_tag: ann-benchmarks-elasticsearch
-    module: ann_benchmarks.algorithms.elasticsearch
-    name: elasticsearch
-    run_groups:
-      m-16-ef-100:
-        arg_groups: [{ef_construction: 100, m: 16}]
+        query_args: [[20, 40, 60]]
+      m-24-ef-64:
+        arg_groups: [{ef_construction: 64, m: 24}]
         args: {}
-        query_args: [[10, 20, 40, 80, 160]]
+        query_args: [[20, 40, 60]]
+      m-16-ef-128:
+        arg_groups: [{ef_construction: 128, m: 16}]
+        args: {}
+        query_args: [[20, 40, 60]]
+      m-24-ef-128:
+        arg_groups: [{ef_construction: 128, m: 24}]
+        args: {}
+        query_args: [[20, 40, 60]]
